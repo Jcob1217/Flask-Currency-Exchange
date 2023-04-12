@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Currency Code</th>
+        <th scope="col">Currency</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Buy</th>
+        <th scope="col">Sell</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for rate in rates %}
+    <tr>
+        <th scope="row"></th>
+
+        <td>{{rate.currency_code}}</td>
+        <td>{{rate.currency}}</td>
+        <td>{{rate.amount}} PLN</td>
+        <td>{{rate.buy}} PLN</td>
+        <td>{{rate.sell}} PLN</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

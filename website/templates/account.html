@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Account{% endblock %}
+
+{% block content %}
+<section class="vh-100 bg-image">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-center mb-5">{{user.first_name}} {{user.last_name}}</h2>
+                <div class="text-center">
+                    {% if currencies %}
+                    <table class="table">
+                      <thead class="thead-light">
+                      <tr>
+                          <th scope="col"></th>
+                          <th scope="col">Currency Code</th>
+                          <th scope="col">Currency</th>
+                          <th scope="col">Amount</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        {% for user_currencies, rates in currencies %}
+                      <tr>
+                          <th scope="row"></th>
+                  
+                          <td>{{rates.currency_code}}</td>
+                          <td>{{rates.currency}}</td>
+                          <td>{{user_currencies.amount}}</td>
+                      </tr>
+                      {% endfor %}
+                      
+                    </tbody>
+                  </table>
+                  <br/>
+                  {% endif %}
+                  <div>
+                    <h4>Total</h4>
+                    {{total}} PLN
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

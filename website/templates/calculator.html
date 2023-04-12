@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Calculator{% endblock %}
+
+{% block content %}
+<section class="vh-100 bg-image">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-center mb-5">Check Conversion</h2>
+
+                <form method="post">
+                    <div class="form-outline mb-4">
+                        <label for="amount">Amount</label>
+                        <input id="amount" name="amount" type="number" step="0.01" class="form-control" value={{amount}}>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <label for="from">From</label>
+                        <select id="from" name="from" class="form-control" value="from_currency_rate">
+                        <option selected="selected">{{from_currency}}</option>
+                        {% for rate in rates %}
+                            <option>{{rate.currency_code}}</option>
+                        {% endfor %}
+                        </select> 
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <label for="to">To</label>
+                        <select id="to" name="to" class="form-control" value="to_currency_rate">
+                        <option selected="selected">{{to_currency}}</option>
+                        {% for rate in rates %}
+                            <option>{{rate.currency_code}}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+
+                    <br/>
+                
+                    <div style="display: flex; justify-content: center;">
+                        <button type="submit" class="btn btn-outline-secondary"  style="width: 100px;">Convert</button>
+                    </div>
+                </form>
+
+                <br/>
+                <br/>
+
+                
+                {% if outcome %}
+                <div>
+                    <div style="display: flex; justify-content: center;">
+                        <div class="card" style="width: 300px; text-align: center;">
+                            <div class="card-body">
+                            {{amount}} {{from_currency}} is {{out_amount}} {{to_currency}}
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                {% endif %}
+                
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    
+
+{% endblock %}
